@@ -11,14 +11,28 @@ class Node:
 
 class doublyLL:
     def __init__(self):
-        self.head = None
+        self._head = None
+        self._tail =None
+        self._length = 0
+        '''these are pointers creates to help keep track of our list and better traverse it'''
     
     def append(self, data):
-        new_node = Node(data)
+      new_node = Node(data)
+      if self.size == 0 and not self._head and not self._tail:
+        self._head = new_node
+        self._tail = new_node
+      else:
+        self._tail.next = new_node
+        new_node.prev = self._tail
+        self._tail = new_node
+      self._size += 1
+        
+        
+        '''new_node = Node(data)
         new_node.next = self.head
         while self.head != None:
             self.head = new_node
-            self.prev = new_node.next
+            self.prev = new_node.next'''
         
         
     def push(self, data):
